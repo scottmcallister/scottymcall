@@ -2,8 +2,8 @@
 <% @articles.each do |article| %>
   <%= link_to article_path(article) do %>
     <h2><%= article.name %></h2>
-    <p>
-      <%= l(article.created_at, format: :long) %>
-    </p>
   <% end %>
+  <span>
+    <%= l(article.created_at, format: :long) %>
+  </span>
 <% end %>

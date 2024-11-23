@@ -1,4 +1,6 @@
 class ArticleController < ApplicationController
+  allow_unauthenticated_access
+
   def index
     @articles = Article.all
     if @articles.nil? || @articles.empty?

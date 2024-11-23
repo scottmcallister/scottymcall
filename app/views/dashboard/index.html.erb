@@ -1,0 +1,7 @@
+<h1>Articles</h1>
+<%= link_to "New Article", "/dashboard/new" %>
+<% @articles.each do |article| %>
+  <h3><%= article.name %></h3>
+  <p><%= l(article.created_at, format: :long) %></p>
+  <%= link_to "Edit", "/dashboard/#{article.id}/edit" %>
+<% end %>
