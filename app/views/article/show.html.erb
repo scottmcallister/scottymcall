@@ -1,5 +1,5 @@
 <h1><%= @article.name %></h1>
 <p><%= l(@article.created_at, format: :long) %></p>
-<% @article.content.split("\n\n").each do |paragraph| %>
-  <p><%= paragraph %></p>
-<% end %>
+<div>
+  <%= @article.content %>
+</div>
