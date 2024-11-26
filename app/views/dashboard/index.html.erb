@@ -2,6 +2,17 @@
 <%= link_to "New Article", "/dashboard/new" %>
 <% @articles.each do |article| %>
   <h3><%= article.name %></h3>
-  <p><%= l(article.created_at, format: :long) %></p>
-  <%= link_to "Edit", "/dashboard/#{article.id}/edit" %>
+  <div>
+    <span>
+      <%= l(article.created_at, format: :long) %>
+    </span>
+    <br>
+    <nav>
+      <%= button_to "Edit", "/dashboard/#{article.id}/edit" %>
+      <%= button_to "Delete", "/dashboard/#{article.id}", method: :delete %>
+    </nav>
+  </div>
 <% end %>
+<p>
+  <%= button_to "Sign out", session_path, method: :delete if authenticated? %>
+</p>

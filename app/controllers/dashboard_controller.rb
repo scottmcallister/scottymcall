@@ -32,4 +32,13 @@ class DashboardController < ApplicationController
       redirect_to edit_article_path(article), alert: "Article could not be updated."
     end
   end
+
+  def delete
+    article = Article.find(params[:id])
+    if article.destroy
+      redirect_to root_path, notice: "Article deleted."
+    else
+      redirect_to article_path(article), alert: "Article could not be deleted."
+    end
+  end
 end

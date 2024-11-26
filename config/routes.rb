@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get "dashboard/:id/edit", to: "dashboard#edit", as: "edit_dashboard"
   patch "dashboard/:id", to: "dashboard#update"
   put "dashboard/:id", to: "dashboard#update"
+  delete "dashboard/:id", to: "dashboard#delete"
 end
