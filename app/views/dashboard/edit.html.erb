@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :draft %>
+    <%= form.check_box :draft, checked: @article.draft %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

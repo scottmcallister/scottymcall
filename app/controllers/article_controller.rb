@@ -2,7 +2,7 @@ class ArticleController < ApplicationController
   allow_unauthenticated_access
 
   def index
-    @articles = Article.all
+    @articles = Article.where(draft: false).order(created_at: :desc)
     if @articles.nil? || @articles.empty?
       # Handle the case where there are no articles
       flash[:notice] = "No articles found."
@@ -11,6 +11,8 @@ class ArticleController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    puts @article.inspect
+    if @article.draft
+      raise ActiveRecord::RecordNotFound
+    end
   end
 end

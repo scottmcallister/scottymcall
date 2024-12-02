@@ -12,9 +12,9 @@ class DashboardController < ApplicationController
   end
 
   def create
-    article = Article.new(params.permit(:name, :category, :content))
+    article = Article.new(params.permit(:name, :category, :content, :draft))
     if article.save
-      redirect_to article_path(article), notice: "Article created."
+      redirect_to '/dashboard', notice: "Article created."
     else
       redirect_to new_article_path, alert: "Article could not be created."
     end
@@ -26,8 +26,8 @@ class DashboardController < ApplicationController
 
   def update
     article = Article.find(params[:id])
-    if article.update(params.permit(:name, :category, :content))
-      redirect_to article_path(article), notice: "Article updated."
+    if article.update(params.permit(:name, :category, :content, :draft))
+      redirect_to '/dashboard', notice: "Article updated."
     else
       redirect_to edit_article_path(article), alert: "Article could not be updated."
     end
@@ -36,7 +36,7 @@ class DashboardController < ApplicationController
   def delete
     article = Article.find(params[:id])
     if article.destroy
-      redirect_to root_path, notice: "Article deleted."
+      redirect_to '/dashboard', notice: "Article deleted."
     else
       redirect_to article_path(article), alert: "Article could not be deleted."
     end

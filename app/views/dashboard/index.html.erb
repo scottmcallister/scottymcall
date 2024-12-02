@@ -7,8 +7,16 @@
       <%= l(article.created_at, format: :long) %>
     </span>
     <br>
+    <span>
+      <% if article.draft %>
+        Draft
+      <% else %>
+        Published
+      <% end %>
+    </span>
+    <br>
     <nav>
-      <%= button_to "Edit", "/dashboard/#{article.id}/edit" %>
+      <%= link_to "Edit", "/dashboard/#{article.id}/edit" %>
       <%= button_to "Delete", "/dashboard/#{article.id}", method: :delete %>
     </nav>
   </div>
